@@ -1,34 +1,100 @@
 [![progress-banner](https://backend.codecrafters.io/progress/shell/117804de-19a7-4cb2-9af2-9c98d0b4ca6e)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
 
-This is a starting point for C solutions to the
+# Shell Wizzard
+
+A POSIX-compliant shell implementation in C, built as part of the
 ["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
 
-In this challenge, you'll build your own POSIX compliant shell that's capable of
-interpreting shell commands, running external programs and builtin commands like
-cd, pwd, echo and more. Along the way, you'll learn about shell command parsing,
-REPLs, builtin commands, and more.
+## Features
+
+This shell implementation includes:
+
+- **Builtin Commands**:
+  - `exit [code]` - Exit the shell with optional exit code
+  - `echo <args>` - Print arguments to stdout
+  - `type <command>` - Display information about command type
+  - `pwd` - Print working directory
+  - `cd <path>` - Change directory
+
+- **External Command Execution**: Run any executable in your PATH
+
+- **Tab Completion**: Press TAB to autocomplete commands from builtins and PATH executables
+
+- **I/O Redirection**:
+  - Output redirection: `command > file` (truncate) or `command >> file` (append)
+  - Error redirection: `command 2> file` (truncate) or `command 2>> file` (append)
+
+- **Advanced Input Handling**:
+  - Raw terminal mode for immediate character processing
+  - Backspace support
+  - REPL (Read-Eval-Print Loop) interface
 
 **Note**: If you're viewing this repo on GitHub, head over to
 [codecrafters.io](https://codecrafters.io) to try the challenge.
 
-# Passing the first stage
+## Building and Running
 
-The entry point for your `shell` implementation is in `src/main.c`. Study and
-uncomment the relevant code, and push your changes to pass the first stage:
+### Prerequisites
+
+- `cmake` (version 3.13 or higher)
+- C compiler with C23 standard support
+
+### Build Instructions
 
 ```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
+cmake -B build -S .
+cmake --build ./build
 ```
 
-Time to move on to the next stage!
+Or simply run:
 
-# Stage 2 & beyond
+```sh
+./your_program.sh
+```
 
-Note: This section is for stages 2 and beyond.
+This script will automatically build the project and run the shell.
 
-1. Ensure you have `cmake` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `src/main.c`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+## Project Structure
+
+- `src/main.c` - Main entry point and REPL implementation
+- `src/command.c` - Command parsing and execution logic
+- `src/command.h` - Command type definitions and function headers
+- `src/terminal.c` - Terminal handling and tab completion
+- `src/terminal.h` - Terminal function headers
+- `CMakeLists.txt` - Build configuration
+
+## Usage Examples
+
+```sh
+$ echo Hello, World!
+Hello, World!
+
+$ pwd
+/home/user/current/directory
+
+$ cd /tmp
+$ pwd
+/tmp
+
+$ type echo
+echo is a shell builtin
+
+$ type ls
+ls is /usr/bin/ls
+
+$ echo "output" > file.txt
+$ echo "more output" >> file.txt
+
+$ ls nonexistent 2> error.log
+```
+
+## Development
+
+To work on this project as part of the CodeCrafters challenge:
+
+1. Make your changes in the `src/` directory
+2. Build and test locally using `./your_program.sh`
+3. Commit your changes: `git commit -am "your message"`
+4. Push to CodeCrafters: `git push origin master`
+
+Test output will be streamed to your terminal.
