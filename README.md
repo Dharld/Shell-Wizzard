@@ -1,5 +1,3 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/117804de-19a7-4cb2-9af2-9c98d0b4ca6e)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
-
 # Shell Wizzard
 
 A POSIX-compliant shell implementation in C, built as part of the
@@ -87,14 +85,3 @@ $ echo "more output" >> file.txt
 
 $ ls nonexistent 2> error.log
 ```
-
-## Development
-
-To work on this project as part of the CodeCrafters challenge:
-
-1. Make your changes in the `src/` directory
-2. Build and test locally using `./your_program.sh`
-3. Commit your changes: `git commit -am "your message"`
-4. Push to CodeCrafters: `git push origin master`
-
-Test output will be streamed to your terminal.
